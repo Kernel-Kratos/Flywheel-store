@@ -2,6 +2,7 @@ package com.shoppingbackend.flywheel_store.service.cart;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.shoppingbackend.flywheel_store.dto.CartDto;
 import com.shoppingbackend.flywheel_store.exceptions.ResourceNotFoundException;
 import com.shoppingbackend.flywheel_store.model.Cart;
-
+import com.shoppingbackend.flywheel_store.model.User;
 import com.shoppingbackend.flywheel_store.repository.CartRepository;
 
 import jakarta.transaction.Transactional;
@@ -53,13 +54,13 @@ public class CartService implements ICartService{
     }
 
     @Override
-    public Long intializeNewCart(){
-        Cart newCart = new Cart();
-       // Long newCartId = cartIdGenerator.incrementAndGet();
-       // newCart.setId(newCartId);
-       
-        Cart savedCart = cartRepository.save(newCart);
-        return savedCart.getId();
+    public Cart intializeNewCart(User user){
+       return Optional.ofNullable(getCartByUserId(user.getId()))
+            .orElseGet(() -> {
+                Cart newCart = new Cart();
+                newCart.setUser(user);
+                return cartRepository.save(newCart);
+            });
     }
 
     @Override
@@ -70,5 +71,10 @@ public class CartService implements ICartService{
     public CartDto convertToCartDto(Cart cart){
         CartDto cartDto = modelMapper.map(cart, CartDto.class);
         return cartDto;
+    }
+
+    @Override
+    public Cart getCartByUserId(Long userId) {
+        return cartRepository.findByUserId(userId);
     }
 }
