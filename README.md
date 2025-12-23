@@ -10,17 +10,17 @@ This project handles complex entity relationships and secure order processing.
 * **Product Management:** Sellers can list products with categories, description and images.
 * **Smart Search:** Filter products by name, brand, category or attributes
 * **Shopping Cart:** Persistent cart management with real-time inventory checks.
-* **Security:** Statless authentication using **JSON Web Tokens(JWT)** and Spring Security.
-* **Order History:** Comprehensive order tracking with timestampping.
+* **Security:** Stateless authentication using **JSON Web Tokens(JWT)** and Spring Security.
+* **Order History:** Comprehensive order tracking with timestamps.
 
 ## Tech Stack 
 * **Core:** Java 17, Spring 3
-* **Database:** PostrgesSql, Hibernate(JPA)
+* **Database:** PostrgesSQL, Hibernate(JPA)
 * **Security:** Spring Security 6, JWT
   
 ## Run Flywheel-Store locally
 
-### Prerequistes
+### Prerequisites
 *Java 17 or higher
 *Postgres Installed and Running
 *Maven
@@ -30,8 +30,8 @@ This project handles complex entity relationships and secure order processing.
 git clone https://github.com/Kernel-Kratos/Flywheel-store.git
 ```
 ### 2. Configure the Database 
-Create a PostgresSql database named flywheel_db (or whatever you want to name it).
-Open `src/main/resoruces/application.properties` and update your credentials : 
+Create a PostgresSQL database named flywheel_db (or whatever you want to name it).
+Open `src/main/resources/application.properties` and update your credentials : 
 ```
 spring.datasource.url=jdbc:postgresql://localhost:5432/your_db_name
 spring.datasource.username=your_postgres_username
@@ -43,7 +43,7 @@ auth.token.jwtSecret=your_secret_key_here
 ```bash
 mvn spring-boot:run
 ```
-The Api will be availabe at http:localhost8080
+The Api will be available at http//localhost:8080
 
 ### Endpoint structure
 * Main endpoint : localhost:8080/api/v1
