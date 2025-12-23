@@ -49,3 +49,10 @@ The Api will be available at http//localhost:8080
 * Main endpoint : localhost:8080/api/v1
 * Controller endpoints : **localhost:8080/api/v1/pluralform/feature** or **localhost:8080/api/v1/pluralform/singularform/feature** 
 > *Eg: localhost:8080/api/v1/products/all or localhost:8080/api/v1/products/product/add*
+
+## Default Settings
+  1. Web server port: 8080
+  2. Database port : 5432
+  3. Database mode : update
+  4. A jwt secret token is set
+  5. Sql log & format : true 
