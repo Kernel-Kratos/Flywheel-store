@@ -39,11 +39,12 @@ spring.datasource.password=your_postgres_password
 # JWT Secret
 auth.token.jwtSecret=your_secret_key_here
 ```
+> A Jwt token is given as default
 ### 3.Run the application 
 ```bash
 mvn spring-boot:run
 ```
-The Api will be available at http//localhost:8080
+The Api will be available at http://localhost:8080
 
 ### Endpoint structure
 * Main endpoint : localhost:8080/api/v1
@@ -51,8 +52,15 @@ The Api will be available at http//localhost:8080
 > *Eg: localhost:8080/api/v1/products/all or localhost:8080/api/v1/products/product/add*
 
 ## Default Settings
-  1. Web server port: 8080
-  2. Database port : 5432
-  3. Database mode : update
-  4. A jwt secret token is set
-  5. Sql log & format : true 
+
+
+|  Setting | Value |
+|  :---- | ---- |
+|  Server Port | 8080 |
+|  Database Port | 5432 |
+|  DDL mode | update |
+|  Jwt token expiration | 1 hr |
+|  Sql log | true |
+|  Max multipart-file upload | 5mb |
+|  Max multipart-file request | 5mb | 
+     
