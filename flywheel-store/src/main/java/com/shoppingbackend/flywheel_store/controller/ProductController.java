@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class ProductController {
     public final IProductService productService;
     
-    @GetMapping("/product/all")
+    @GetMapping("/all")
     @Transactional
     public ResponseEntity<ApiResponse> getAllProducts(){
         try {
