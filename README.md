@@ -21,9 +21,9 @@ This project handles complex entity relationships and secure order processing.
 ## Run Flywheel-Store locally
 
 ### Prerequisites
-*Java 17 or higher
-*Postgres Installed and Running
-*Maven
+* Java 17 or higher
+* Postgres Installed and Running
+* Maven
 
 ### 1.Getting the source
 ```bash
@@ -48,7 +48,7 @@ The Api will be available at http://localhost:8080
 
 ### Endpoint structure
 * Main endpoint : localhost:8080/api/v1
-* Controller endpoints : **localhost:8080/api/v1/pluralform/feature** or **localhost:8080/api/v1/pluralform/singularform/feature** 
+* Controller endpoints : **localhost:8080/api/v1/pluralform/request** or **localhost:8080/api/v1/pluralform/singularform/request** 
 > *Eg: localhost:8080/api/v1/products/all or localhost:8080/api/v1/products/product/add*
 
 ## Default Settings
