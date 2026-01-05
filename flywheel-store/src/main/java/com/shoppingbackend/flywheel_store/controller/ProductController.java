@@ -7,6 +7,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -60,7 +61,7 @@ public class ProductController {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse("Product Not found", null));
         }
     }
-
+    @PreAuthorize("hasAuthority('Role_Admin')")
     @PostMapping("/product/add")
     public ResponseEntity<ApiResponse> addProduct (@RequestBody AddProductRequest product) {
         try{
@@ -70,7 +71,7 @@ public class ProductController {
             return ResponseEntity.status(CONFLICT).body(new ApiResponse(e.getMessage(), null));
         }
     }
-
+    @PreAuthorize("hasAuthority('Role_Admin')")
     @PutMapping("product/update/{productId}")
     public ResponseEntity<ApiResponse> updateProduct(@RequestBody UpdateProductRequest request, @PathVariable Long productId) {
         try {
@@ -80,7 +81,7 @@ public class ProductController {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
     }
-
+    @PreAuthorize("hasAuthority('Role_Admin')")
     @DeleteMapping("product/delete/{productId}")
     public ResponseEntity<ApiResponse> deleteProduct(@PathVariable Long productId){
         try {
