@@ -46,7 +46,7 @@ public class OrderService implements IOrderService {
     private Order creatOrder(Cart cart){
         Order order = new Order();
         order.setUser(cart.getUser());
-        order.setOrderStatus(OrderStatus.PENDING);
+        order.setOrderStatus(OrderStatus.Waiting_For_Payment);
         order.setOrderDateTIme(LocalDateTime.now());
         return order;
     }
