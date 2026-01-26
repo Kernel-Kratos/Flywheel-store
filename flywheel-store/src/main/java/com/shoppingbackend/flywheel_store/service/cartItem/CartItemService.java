@@ -3,7 +3,7 @@ package com.shoppingbackend.flywheel_store.service.cartItem;
 import java.math.BigDecimal;
 
 import org.springframework.stereotype.Service;
-
+import com.shoppingbackend.flywheel_store.controller.AuthController;
 import com.shoppingbackend.flywheel_store.exceptions.ResourceNotFoundException;
 import com.shoppingbackend.flywheel_store.model.Cart;
 import com.shoppingbackend.flywheel_store.model.CartItem;
@@ -32,6 +32,9 @@ public class CartItemService implements ICartItemService {
           5. if no then create new cartItem entry  */
         Cart cart = cartService.getCart(cartId);
         Product product = productService.getProductById(productId);
+        if (productService.getInventory(product) == 0){
+            throw new ResourceNotFoundException("Product Out of Stock");
+        }   
         CartItem cartItem = cart.getItems()
                 .stream()
                 .filter(item -> item.getProduct().getId().equals(productId))
