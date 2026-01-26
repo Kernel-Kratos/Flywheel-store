@@ -3,7 +3,6 @@ package com.shoppingbackend.flywheel_store.service.cartItem;
 import java.math.BigDecimal;
 
 import org.springframework.stereotype.Service;
-import com.shoppingbackend.flywheel_store.controller.AuthController;
 import com.shoppingbackend.flywheel_store.exceptions.ResourceNotFoundException;
 import com.shoppingbackend.flywheel_store.model.Cart;
 import com.shoppingbackend.flywheel_store.model.CartItem;
