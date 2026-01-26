@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,8 +30,17 @@ public class Product {
     private Long id;
     private String name;
     private String brand;
+    @Min(value = 0, message = "Price cannot be negative")
     private BigDecimal price;
+
+    @Min(value = 0, message = "Inventory cannot be negative")
+    @Column(nullable = false)
     private int inventory;
+
+    // This is because the @Version to inventory will fight with Hibernate as hibernate will do inventory+1 and our subtraction logic: inventory -1
+    @Version
+    private int version;
+
     private String description;
     
     
