@@ -123,6 +123,7 @@ public class ProductService implements IProductService {
     public List<Product> getProductsByName(String name) {
         return productRepository.findByName(name);
     }
+
     @Override
     public List<Product> getProductsByBrandAndName(String brand, String name) {
         return productRepository.findByBrandAndName(brand, name);
@@ -137,6 +138,7 @@ public class ProductService implements IProductService {
     public List<ProductDto> getConvertedProducts(List <Product> products){
         return products.stream().map(this::convertToProductDto).toList();
     }
+
     @Override
     public ProductDto convertToProductDto (Product product){
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
@@ -146,6 +148,12 @@ public class ProductService implements IProductService {
                 .toList();
         productDto.setImages(imageDtos);
         return productDto;
-
+    
     }
+
+    @Override
+    public int getInventory(Product product){
+        return product.getInventory();
+    }
+
 }
